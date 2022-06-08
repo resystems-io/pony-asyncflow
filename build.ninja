@@ -1,0 +1,9 @@
+rule ponyc
+  command = ponyc -o build -b asyncflow
+
+rule mkdir
+  command = mkdir -p $out
+
+build build/asyncflow: ponyc main.pony asyncflow.pony _example.pony _test.pony || build
+
+build build: mkdir
